@@ -1,17 +1,35 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Layout :style="{minHeight: '100vh'}">
+      <TopBar />
+      <Layout style="position: relative; margin-top: 20px;">
+        <SideMenu />
+        <Content class="content">
+          <router-view class="content--inner" />
+        </Content>
+      </Layout>  
+    </Layout>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import TopBar from '@/views/TopBar.vue'; // @ is an alias to /src
+import SideMenu from '@/components/SideMenu';
 
 @Component({
   components: {
-    HelloWorld,
+    TopBar,
+    SideMenu
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+
+}
 </script>
+<style scoped>
+.content{
+  position: relative;
+  margin-left: 120px;
+}
+</style>
