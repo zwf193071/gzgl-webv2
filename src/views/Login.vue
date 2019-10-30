@@ -2,7 +2,7 @@
 	<div class="login">
 		<div class="login-box">
 			<div class="info">
-				<img src="../assets/login/user.png"> 用户名*
+				<img src="../assets/image/login/user.png"> 用户名*
 			</div>
 			<Input
 				v-model.trim="account"
@@ -13,7 +13,7 @@
 				class="input-item"
 			/>
 			<div class="info">
-				<img src="../assets/login/password.png">密码*
+				<img src="../assets/image/login/password.png">密码*
 			</div>
 			<Input
 				v-model.trim="password"
@@ -115,7 +115,7 @@ export default class Login extends Vue {
 	width:100%;
 	height:100vh;
 	font-size: 14px;
-	background: url('../assets/login/BG1.jpg') no-repeat center center fixed;
+	background: url('../assets/image/login/BG1.jpg') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -140,7 +140,7 @@ export default class Login extends Vue {
 .login-box .login-btn{
 	height: 40px;
 	width:350px;
-	background: #000 url('../assets/login/submit.png') no-repeat center center;
+	background: #000 url('../assets/image/login/submit.png') no-repeat center center;
 	background-size: auto 40px ;
 	border: 1px solid #000;
 	color: #FFF;
