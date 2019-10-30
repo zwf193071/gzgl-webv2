@@ -22,8 +22,8 @@
     </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { Route } from 'vue-router'
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import Router from 'vue-router';
 import config from './config.js'
 import Storage from '@/utils/Storage.js'
 
@@ -35,15 +35,17 @@ export default class SideMenu extends Vue {
     private currentActive: number = 0; // 默认第一个菜单为高亮
     private prefixCls: array = prefixCls;
     
+    @Watch('$route',{ immediate: true })
+    private changeRouter(route: Route){
+        if(Storage.get('currentRoute')) {
+            this.currentActive = this.getCurrentRoute(route)
+        }
+    }
+
     created() {
         this.data = config.menu
     }
-    @Watch('$route')
-    private onChildChanged(val: Route, oldVal: Route) {
-        console.log(2222)
-        console.log(val, oldVal)
-        this.currentActive = this.getCurrentRouter(val.path).active
-    }
+
     public toggleMenu() {
         this.currentShrink = !this.currentShrink;
         this.prefixCls = [
@@ -54,18 +56,22 @@ export default class SideMenu extends Vue {
         ]
     }
     public linkTo(index) {
-        const linkName = this.data[index].link
-        Storage.set('currentRoute', linkName)
+        this.currentActive = index;
+        const linkName = this.data[index].link;
+        Storage.set('currentRoute', linkName);
         if(Boolean(linkName)) {
-            this.$router.push(linkName)
+            this.$router.push(linkName);
         }
     }
-    public getCurrentRouter(route) {
-        console.log(1211111)
-        const menu = this.data
-        let index = 0
-
-        return {active: index}
+    public getCurrentRoute(route) {
+        let index = 0;
+        config.menu.some((item, i) => {
+            if (item.link === route.path) {
+                index = i;
+                return true
+            }
+        })
+        return index
     }
 }
 </script>

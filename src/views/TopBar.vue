@@ -8,7 +8,6 @@
         <div class="right_area" @click="logOut">
             <Input
 				v-model.trim="keyword"
-				clearable
                 suffix="ios-search"
                 class="search-input"
                 placeholder="请输入宗地编码或者地址"
@@ -49,6 +48,8 @@ export default class TopBar extends Vue {
 <style>
 .search-input .ivu-input{
     background-color: rgba(133, 144, 166, 0.25);
+    border: none;
+    color: #fff;
 }
 .search-input .ivu-input-suffix i{
     color: #fff;

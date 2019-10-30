@@ -1,11 +1,10 @@
 export default {
-    active: 1, // 默认激活第一个菜单
     menu: [
         {
             defaultImgSrc: 'zk-w.png',
             activeImgSrc: 'zk-r.png',
             label: '主控台',
-            link: '/home'
+            link: '/home/control'
         },
         {
             defaultImgSrc: 'cx-w.png',
